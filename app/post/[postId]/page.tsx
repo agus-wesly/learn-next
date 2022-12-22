@@ -1,5 +1,5 @@
 import React from "react";
-import { getPost } from "../../../functions";
+import { getPost } from "../../../utils";
 import { Post } from "../../../typings";
 
 interface IProps {
@@ -15,10 +15,17 @@ const Page = async ({ params: { postId } }: IProps) => {
   );
 
   return (
-    <div className="flex flex-col max-w-[290px] border-2 aspect-[4/3]  bg-white/60 rounded-md p-5 pt-3">
-      <h1 className="text-xl font-bold ">{singlePost.title}</h1>
-      <p className="text-lg font-semibold"> {singlePost.body}</p>
-      <p>Posted By User {singlePost.userId}</p>
+    <div className="flex flex-col max-w-[290px] border-2 aspect-[4/3] bg-slate-100 dark:bg-gray-900 rounded-md p-5 pt-3 mx-5">
+      <h1 className="text-xl font-semibold capitalize mb-4">
+        {singlePost.title}
+      </h1>
+      <p className="text-lg text-slate-900 dark:text-slate-300 mb-2">
+        {" "}
+        {singlePost.body}
+      </p>
+      <p className="text-slate-900 font-light dark:text-slate-500">
+        Posted By User {singlePost.userId}
+      </p>
     </div>
   );
 };
