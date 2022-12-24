@@ -12,9 +12,6 @@ const Navbar = () => {
         <Link href={"/post"}>Posts</Link>
       </div>
       <div className="p-3 text-center bg-slate-100 dark:bg-gray-900 min-w-[90px] rounded-md font-bold text-base">
-        <Link href={"/counter"}>Counter</Link>
-      </div>
-      <div className="p-3 text-center bg-slate-100 dark:bg-gray-900 min-w-[90px] rounded-md font-bold text-base">
         <ToggleBtn />
       </div>
       <div className="p-3 text-center bg-slate-100 dark:bg-gray-900 min-w-[90px] rounded-md font-bold text-base">
@@ -25,6 +22,9 @@ const Navbar = () => {
       </div>
       <div className="p-3 text-center bg-slate-100 dark:bg-gray-900 min-w-[90px] rounded-md font-bold text-base">
         <Link href={"/upload"}>Upload</Link>
+      </div>
+      <div className="p-3 text-center bg-slate-100 dark:bg-gray-900 min-w-[90px] rounded-md font-bold text-base">
+        <Link href={"/modal"}>Modal</Link>
       </div>
     </div>
   );
