@@ -21,6 +21,7 @@ export default function RootLayout({
           <Navbar />
           {children}
         </ProviderTheme>
+        <div id="_portal"></div>
       </body>
     </html>
   );
