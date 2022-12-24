@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import { auth, storage } from "../../firebase";
+import { auth, storage, db } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import allInputs from "../../utils/inputField";
-import { db } from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { AllInp } from "../../typings";
 
@@ -73,10 +72,21 @@ const page = () => {
     const { uid } = userCred.user;
 
     //Add to document
-    const docRef = await setDoc(doc(db, "users", uid), {
+    await setDoc(doc(db, "users", uid), {
       ...allInputField,
       profile: downURL,
     });
+
+    //set All state to default value
+    setAllInputField({
+      name: null,
+      age: null,
+      email: null,
+      pass: null,
+    });
+    setDownURL("");
+    setFile(null);
+    window.alert("Upload Success !");
   };
 
   return (
@@ -133,7 +143,6 @@ const page = () => {
 
         <button
           type="submit"
-          //disabled={!downURL || Object.keys(allInputField).length < 1}
           className="mt-5 rounded-lg bg-purple-700 font-bold text-white p-3 disabled:bg-slate-500 disabled:cursor-not-allowed disabled:text-white/80"
         >
           Upload

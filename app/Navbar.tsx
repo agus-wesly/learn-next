@@ -26,6 +26,9 @@ const Navbar = () => {
       <div className="p-3 text-center bg-slate-100 dark:bg-gray-900 min-w-[90px] rounded-md font-bold text-base">
         <Link href={"/upload"}>Upload</Link>
       </div>
+      <div className="p-3 text-center bg-slate-100 dark:bg-gray-900 min-w-[90px] rounded-md font-bold text-base">
+        <Link href={"/users"}>Users List</Link>
+      </div>
     </div>
   );
 };
