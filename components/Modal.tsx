@@ -1,27 +1,29 @@
 "use client";
 
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import { createPortal } from "react-dom";
 
-const Modal = ({
-  children,
-  setOpenModal,
-}: {
-  children: React.ReactNode;
-  setOpenModal: Dispatch<SetStateAction<boolean>>;
-}) => {
-  const [mounted, setMounted] = useState(false);
+const Modal = ({ children }: { children: ReactNode }) => {
+  const [mount, setMount] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    setMount(true);
+
     return () => {
-      setMounted(false);
+      setMount(false);
     };
   }, []);
 
-  if (!mounted) return null;
+  if (!mount) return null;
 
-  return createPortal(children, document.getElementById("_portal")!);
+  return createPortal(
+    <>
+      <div className="absolute inset-0 w-screen h-screen bg-black/10 z-[5] flex items-center justify-center">
+        {children}
+      </div>
+    </>,
+    document.getElementById("_portal")!
+  );
 };
 
 export default Modal;

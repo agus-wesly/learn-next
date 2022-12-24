@@ -1,10 +1,12 @@
 import "../styles/globals.css";
 import Navbar from "./Navbar";
-import { Inter } from "@next/font/google";
+import { Manrope } from "@next/font/google";
 import ProviderTheme from "./ProviderTheme";
 
-const inter = Inter({
-  variable: "--font-inter",
+const roboto = Manrope({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-roboto",
 });
 
 export default function RootLayout({
@@ -13,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className={inter.variable}>
+    <html className={roboto.variable}>
       <body className="bg-white/80 dark:bg-black/80">
         <ProviderTheme>
           <Navbar />

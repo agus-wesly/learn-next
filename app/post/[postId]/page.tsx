@@ -1,6 +1,7 @@
 import React from "react";
 import { getPost } from "../../../utils";
 import { Post } from "../../../typings";
+import { notFound } from "next/navigation";
 
 interface IProps {
   params: {
@@ -13,6 +14,10 @@ const Page = async ({ params: { postId } }: IProps) => {
     `https://jsonplaceholder.typicode.com/posts/${postId}`,
     true
   );
+
+  if (Object.keys(singlePost).length < 1) {
+    notFound();
+  }
 
   return (
     <div className="flex flex-col max-w-[290px] border-2 aspect-[4/3] bg-slate-100 dark:bg-gray-900 rounded-md p-5 pt-3 mx-5">
