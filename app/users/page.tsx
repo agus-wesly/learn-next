@@ -2,6 +2,8 @@ import Table from "../../components/Table";
 import { collection, DocumentData, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 
+export const revalidate = 10;
+
 const getAllUser = async () => {
   const querySnapshot = await getDocs(collection(db, "users"));
 

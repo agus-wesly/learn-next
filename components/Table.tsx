@@ -2,6 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { DataGrid, GridValueGetterParams } from "@mui/x-data-grid";
+import { useRouter } from "next/navigation";
 import { DocumentData } from "firebase/firestore";
 import { useState, useEffect, useMemo } from "react";
 import { doc, deleteDoc } from "firebase/firestore";
@@ -17,6 +18,7 @@ export default function DataTable({ users }: IProps) {
   const [selectedRow, setSelectedRow] = useState("");
   const { theme } = useTheme();
   const [mount, setMount] = useState(false);
+  const router = useRouter();
 
   const columns: any = useMemo(() => {
     return [
@@ -76,6 +78,7 @@ export default function DataTable({ users }: IProps) {
   const handlePress = async () => {
     await deleteDoc(doc(db, "users", selectedRow));
     setShowModal(false);
+    router.refresh();
   };
 
   const handleCancel = () => {
